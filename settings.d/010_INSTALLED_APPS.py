@@ -22,4 +22,5 @@ INSTALLED_APPS = (
     #'tardis.apps.publication_forms',
     'tardis.apps.oaipmh',
     'tardis.apps.mydata',
+    'tardis.apps.sftp',
 )
