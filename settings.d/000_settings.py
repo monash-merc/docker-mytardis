@@ -15,6 +15,7 @@ INSTALLED_APPS += (
     'tardis.search',
     'tardis.tardis_portal',
     'tardis.tardis_portal.templatetags',
+    'tardis.apps.sftp',
 )
 
 MIDDLEWARE_CLASSES += (
