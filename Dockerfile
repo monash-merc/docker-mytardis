@@ -34,15 +34,13 @@ RUN pip install --no-cache-dir \
 COPY src/mytardis/tardis/ tardis/
 COPY src/mytardis/wsgi.py tardis/
 COPY src/mytardis/mytardis.py ./
+COPY src/mytardis/package.json ./
 
 RUN ln -s mytardis.py manage.py
 
 # Based on src/mytardis/build.sh
-COPY requirements-base.txt src/mytardis/requirements-docs.txt src/mytardis/requirements-test.txt ./
-RUN pip install --no-cache-dir \
-  -r requirements-base.txt \
-  -r requirements-docs.txt \
-  -r requirements-test.txt
+COPY src/mytardis/requirements.txt src/mytardis/requirements-base.txt src/mytardis/requirements-docs.txt src/mytardis/requirements-test.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 # from src/mytardis/package.json
 # https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
@@ -50,20 +48,15 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
   && apt-get -y install \
     nodejs \
   && apt-get clean
-RUN npm install \
-  angular@1.3.2 \
-  angular-resource@1.3.2 \
-  ng-dialog@0.3.4 \
-  && apt-get -y remove nodejs
-
+RUN npm install 
 # UserWarning: The psycopg2 wheel package will be renamed from release 2.8
 # <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>
 RUN pip install --no-cache-dir \
   psycopg2-binary
 
 # Publication forms
-RUN pip install --no-cache-dir \
-  -r tardis/apps/publication_forms/requirements.txt
+#RUN pip install --no-cache-dir \
+#  -r tardis/apps/publication_forms/requirements.txt
 
 # mytardis-app-mydata
 # https://github.com/mytardis/mytardis-app-mydata
@@ -93,8 +86,8 @@ RUN pip install --no-cache-dir \
   django-generate-secret-key==1.0.2
 
 # push_to
-RUN pip install --no-cache-dir \
-  -r tardis/apps/push_to/requirements.txt
+#RUN pip install --no-cache-dir \
+#  -r tardis/apps/push_to/requirements.txt
 
 # nifcert
 COPY ./src/nifcert/ nifcert/
