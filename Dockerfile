@@ -93,11 +93,6 @@ RUN pip install --no-cache-dir \
 COPY ./src/nifcert/ nifcert/
 ENV MYTARDIS_NIFCERT_ENABLE='False'
 
-# Long user name and email address fix for AAF user name registration and student long emails
-RUN pip install --no-cache-dir \
-  django-longerusernameandemail \
-  south
-
 # Bioformats workaround
 # Fix schema check migration timing issue; Bioformats fixture loaded in /docker-entrypoint.d/mytardisbf
 COPY ./src/mytardisbf_apps.py /usr/src/app/src/mytardisbf/mytardisbf/apps.py
