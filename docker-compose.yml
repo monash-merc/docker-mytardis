@@ -1,29 +1,9 @@
 version: '2'
 volumes:
   db:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '/Volumes/swarm/docker-mytardis/volumes/db'
   staging:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '/Volumes/swarm/docker-mytardis/volumes/staging'
   static:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '/Volumes/swarm/docker-mytardis/volumes/static'
   store:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '/Volumes/swarm/docker-mytardis/volumes/store'
 services:
   django:
     image: uwaedu/mytardis_django:uwa.3.9.0
