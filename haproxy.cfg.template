@@ -9,7 +9,7 @@ defaults
   timeout server 1m
 
 frontend django
-  acl network_allowed src 127.0.0.0/8 10.0.0.0/8 192.168.0.0/16 172.16.0.0/12
+  acl network_allowed src 0.0.0.0 118.138.234.2 130.194.203.182 127.0.0.0/8 10.0.0.0/8 192.168.0.0/16 172.16.0.0/12
   acl url_static url_beg /static
   bind :8080
   bind :8443 ssl crt /localhost_chain.pem
