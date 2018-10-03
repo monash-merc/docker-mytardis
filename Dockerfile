@@ -107,5 +107,3 @@ COPY settings_pre.py ./settings_pre.py
 
 ENV MYTARDIS_DEFAULT_INSTITUTION='The University of Western Australia'
 
-RUN pip uninstall -y --no-cache-dir \
-  South
