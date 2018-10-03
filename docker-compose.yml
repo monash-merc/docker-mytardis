@@ -12,7 +12,7 @@ services:
       - '8001:8000'
     environment:
       - DJANGO_ADMINS=[('Dean Taylor','dean.taylor@uwa.edu.au'),]
-      - DJANGO_ALLOWED_HOSTS=['trudat-uat.cmca.uwa.edu.au','10.174.0.16','localhost',]
+      - DJANGO_ALLOWED_HOSTS=['*']
       - DJANGO_DATETIME_FORMAT='jS F Y H:i'
       - DJANGO_DATE_FORMAT='jS F Y'
       - DJANGO_DEBUG=False
