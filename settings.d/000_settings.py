@@ -5,7 +5,7 @@ INSTALLED_APPS += (
     'django.contrib.humanize',
     'django_extensions',
     'kombu.transport.django',
-    'mustachejs',
+    'jstemplate',
     'registration',
     'tastypie',
     'tastypie_swagger',
