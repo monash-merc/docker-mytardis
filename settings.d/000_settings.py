@@ -11,7 +11,7 @@ INSTALLED_APPS += (
     'tastypie_swagger',
     'tardis.analytics',
     'tardis.apps.oaipmh',
-    'tardis.apps.publication_forms',
+    #'tardis.apps.publication_forms',
     'tardis.search',
     'tardis.tardis_portal',
     'tardis.tardis_portal.templatetags',
