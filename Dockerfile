@@ -96,8 +96,8 @@ ENV MYTARDIS_NIFCERT_ENABLE='False'
 # Bioformats workaround
 # Fix schema check migration timing issue; Bioformats fixture loaded in /docker-entrypoint.d/mytardisbf
 COPY ./src/mytardisbf_apps.py /usr/src/app/src/mytardisbf/mytardisbf/apps.py
-COPY ./src/forms.py /usr/src/app/tardis/tardis_portal/forms.py
-COPY ./src/widgets.py /usr/src/app/tardis/tardis_portal/widgets.py
+#COPY ./src/forms.py /usr/src/app/tardis/tardis_portal/forms.py
+#COPY ./src/widgets.py /usr/src/app/tardis/tardis_portal/widgets.py
 
 COPY docker-entrypoint.d/ /docker-entrypoint.d/
 COPY docker-entrypoint_celery.d/ /docker-entrypoint_celery.d/
