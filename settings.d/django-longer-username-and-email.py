@@ -1,2 +1,0 @@
-INSTALLED_APPS += ('longerusernameandemail',)
-
