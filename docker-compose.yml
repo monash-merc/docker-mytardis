@@ -42,8 +42,8 @@ services:
     environment:
       - CELERY_ENABLE=True
       - DJANGO_LOG_LEVEL=DEBUG
-      - MYTARDIS_BIOFORMATS_ENABLE=True
-      - MYTARDIS_NIFCERT_ENABLE=True
+      - MYTARDIS_BIOFORMATS_ENABLE=False
+      - MYTARDIS_NIFCERT_ENABLE=False
     env_file:
       - env.POSTGRES
     links:
@@ -57,8 +57,8 @@ services:
     image: uwaedu/mytardis_django:uwa.3.9.0
     environment:
       - CELERY_ENABLE=beat
-      - MYTARDIS_BIOFORMATS_ENABLE=True
-      - MYTARDIS_NIFCERT_ENABLE=True
+      - MYTARDIS_BIOFORMATS_ENABLE=False
+      - MYTARDIS_NIFCERT_ENABLE=False
     env_file:
       - env.POSTGRES
     links:
