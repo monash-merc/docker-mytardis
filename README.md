@@ -12,6 +12,12 @@ $ cd mytardis
 ```
 
 * rename all the env_template.MODULE files by removing the "_template" from the name.
+You can do this with a command like the one below. Use echo before mv for a dry run.
+
+```
+$ for MODULE in *template*; do mv "$MODULE" "${MODULE/_template/}"; done
+```
+
 * edit the resulting env.MODULE files with the required settings.
 * template files that are not required: ensure the files are renamed and blank OR remove the relevant entry in the docker-compose.yml file.
 * edit Dockerfile and/or docker-compose.yml to your desired settings / alterations.
