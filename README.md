@@ -1,3 +1,5 @@
+[![Build Status](https://semaphoreci.com/api/v1/manishkumr/docker-mytardis/branches/pull-request-6/badge.svg)](https://semaphoreci.com/manishkumr/docker-mytardis)
+
 # docker-mytardis
 
 # Deployment - Docker compose
