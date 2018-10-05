@@ -2,46 +2,44 @@
 
 # Deployment - Docker compose
 
-# Development
-
-## Dev. MyTardis develop branch
-
 ```
-$ git clone -b develop --recursive https://github.com/UWA-FoS/docker-mytardis.git mytardis
+$ git clone --recursive https://github.com/monash-merc/docker-mytardis.git mytardis
 $ cd mytardis
 ```
 
-Required to contribute the the MyTardis project.
+The `--recursive` option is required to pull in the git submodules listed in `.gitmodules`,
+i.e. `mytardis`, `mytardis-app-mydata`, and `mytardis-nif-cert`.  The `mytardis-app-mydata`
+submodule (required if using the MyData upload client) and `mytardis-nif-cert` submodule
+(required if using NIF certified data) provide optional extensions for your MyTardis deployment.
 
-This will pull all the MyTardis develop branch source and set docker-compose.yml file for the latest UWA develop docker image with prerequisites for testing, etc...
+If using the default `mytardis-4.x` branch of the `monash-merc/docker-mytardis` repository,
+the recursive git clone will pull in all of the MyTardis `series-4.0` branch source code.
+
+The `docker-compose.yml` references a `monashmerc/mytardis_django` Docker image (based on UWA's
+`uwaedu/mytardis_django` docker image), which can be pulled from DockerHub.  Alternatively, it
+can be built locally from source, as described below.
 
 To contribute to the MyTardis project please read the [CONTRIBUTING.rst](https://github.com/mytardis/mytardis/blob/master/CONTRIBUTING.rst).
 
-## Dev. UWA production build.
+## General instructions
 
-```
-$ git clone --recursive https://github.com/UWA-FoS/docker-mytardis.git mytardis
-$ cd mytardis
-```
+* Rename each required env\_template.MODULE file removing the "\_template" from the name.
+  * Database settings are essential, so you will require `env.POSTGRES` or an equivalent
+    for your preferred database engine.
+  * Django email settings (configured in `env.DJANGO_EMAIL`) are essential for running MyTardis
+    in production (with Django's DEBUG set to False), because unhandled exceptions will be
+    emailed to the MyTardis server administrators.
+* If you don't require the functionality configured by one or more of these env files, then you
+    don't need to rename it, but you should check whether it is referenced in any of the
+    `env_file:` sections of your `docker-compose.yml` file and remove any references to it.
+* The `Dockerfile` can be used with `docker-compose build` to build the
+    `monashmerc/mytardis_django` image which is referenced from within the `docker-compose.yml`
+     file.
+    * You may need to build your own version of the `monashmerc/mytardis_django` image if
+      you need to customize MyTardis's source code, but running `docker-compose` can pull
+      a pre-built `monashmerc/mytardis_django` image from DockerHub.
 
-Required to add new features and/or settings to the current UWA production MyTardis service.
-
-## General dev. instructions
-
-* rename the relevant env_template.MODULE file removing the "_template" from the name.
-* edit the env.MODULE files with the required settings.
-* template file that are not required, ensure the files are renamed and blank OR remove the relevant entry in the docker-compose.yml file.
-* rename all the env_template.MODULE files by removing the "_template" from the name.
-You can do this with a command like the one below. Use echo before mv for a dry run.
-
-```
-$ for MODULE in *template*; do mv "$MODULE" "${MODULE/_template/}"; done
-```
-
-* edit the resulting env.MODULE files with the required settings.
-* template files that are not required: ensure the files are renamed and blank OR remove the relevant entry in the docker-compose.yml file.
-* edit Dockerfile and/or docker-compose.yml to your desired settings / alterations.
-
+Edit `Dockerfile` and/or `docker-compose.yml` to your desired settings / alterations.
 
 ```
 $ docker-compose pull                  # acquire the latest image from DockerHub
@@ -57,7 +55,8 @@ $ docker-compose logs --no-color -f    # check logging output
 $ docker-compose exec django python mytardis.py createsuperuser
 ```
 
-Once the startup process has completed point you browser to http://localhost:8001/ and login using the credentials provided to the createsuperuser script above.
+Once the startup process has completed point you browser to http://localhost:8080/ and login
+using the credentials provided to the createsuperuser script above.
 
 This development uses [Git Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) to incorporate other code bases into the build process were appropriate, such as the MyTardis source. To work on a different upstream version you should follow "Working on a Project with Submodules", "Pulling in Upstream Changes". E.g.,
 
@@ -86,7 +85,7 @@ Configuration can be accomplished in a number of different was as circumstance d
 
   The scripts are executed in the startup shell (not spawned) and are processed in lexical order.
 
-* docker-entrypoint_celery.d/
+* docker-entrypoint\_celery.d/
 
   Processed in the Celery containers.
 

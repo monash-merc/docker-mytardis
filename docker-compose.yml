@@ -11,13 +11,13 @@ services:
     ports:
       - '8001:8000'
     environment:
-      - DJANGO_ADMINS=[('Dean Taylor','dean.taylor@uwa.edu.au'),]
+      - DJANGO_ADMINS=[('MyTardis Administrator','mytardis.admin@example.com'),]
       - DJANGO_ALLOWED_HOSTS=['*']
       - DJANGO_DATETIME_FORMAT='jS F Y H:i'
       - DJANGO_DATE_FORMAT='jS F Y'
       - DJANGO_DEBUG=False
-      - DJANGO_DEFAULT_FROM_EMAIL='donotreply-trudat-uat@uwa.edu.au'
-      - DJANGO_EMAIL_SUBJECT_PREFIX="[TruDat@UWA_UAT]:"
+      - DJANGO_DEFAULT_FROM_EMAIL='donotreply-mytardis@example.com'
+      - DJANGO_EMAIL_SUBJECT_PREFIX="[MyTardis]:"
       - DJANGO_LOG_LEVEL=DEBUG
       - DJANGO_SECURE_PROXY_SSL_HEADER=('HTTP_X_FORWARDED_PROTO', 'https')
       - GUNICORN_WORKER_CLASS=gevent
@@ -27,7 +27,6 @@ services:
       - MYTARDIS_RAPID_CONNECT_ENABLED=False
     env_file:
       - env.POSTGRES
-      - env.RAPID_CONNECT
     links:
       - db
       - rabbitmq
@@ -101,7 +100,7 @@ services:
       - static:/usr/src/app/static/:ro
       - ./mysite.template:/etc/nginx/conf.d/mysite.template
     environment:
-      - NGINX_HOST=trudat-uat-static.cmca.uwa.edu.au
+      - NGINX_HOST=mytardis.example.com
       - NGINX_PORT=80
     command: /bin/bash -c "envsubst < /etc/nginx/conf.d/mysite.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
     mem_limit: 500m
