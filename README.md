@@ -3,13 +3,16 @@
 # Deployment - Docker compose
 
 ```
-$ git clone -b mytardis-4.x --recursive https://github.com/monash-merc/docker-mytardis.git mytardis
+$ git clone --recursive https://github.com/monash-merc/docker-mytardis.git mytardis
 $ cd mytardis
 ```
 
 The `--recursive` option is required to pull in the the MyTardis git submodule.
 
-This will pull all the MyTardis series-4.0 branch source and set docker-compose.yml file for the latest monashmerc/mytardis\_django docker image (based on UWA's uwaedu/mytardis\_django MyTardis docker image) with prerequisites for testing, etc...
+If using the default `mytardis-4.x` branch of the `monash-merc/docker-mytardis` repository,
+this will pull all the MyTardis series-4.0 branch source and set docker-compose.yml file for
+the latest monashmerc/mytardis\_django docker image (based on UWA's uwaedu/mytardis\_django
+MyTardis docker image) with prerequisites for testing, etc...
 
 To contribute to the MyTardis project please read the [CONTRIBUTING.rst](https://github.com/mytardis/mytardis/blob/master/CONTRIBUTING.rst).
 
