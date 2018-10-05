@@ -1,4 +1,4 @@
-[![Build Status](https://semaphoreci.com/api/v1/manishkumr/docker-mytardis/branches/pull-request-6/badge.svg)](https://semaphoreci.com/manishkumr/docker-mytardis)
+[![Build Status](https://semaphoreci.com/api/v1/manishkumr/docker-mytardis/branches/mytardis-4-x/badge.svg)](https://semaphoreci.com/manishkumr/docker-mytardis)
 
 # docker-mytardis
 
