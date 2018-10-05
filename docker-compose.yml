@@ -6,7 +6,7 @@ volumes:
   store:
 services:
   django:
-    image: uwaedu/mytardis_django:uwa.3.9.0
+    image: monashmerc/mytardis_django:4.0-RC9
     build: .
     ports:
       - '8001:8000'
