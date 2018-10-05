@@ -15,8 +15,8 @@ submodule (required if using the MyData upload client) and `mytardis-nif-cert` s
 If using the default `mytardis-4.x` branch of the `monash-merc/docker-mytardis` repository,
 the recursive git clone will pull in all of the MyTardis `series-4.0` branch source code.
 
-The `docker-compose.yml` references a `monashmerc/mytardis\_django` Docker image (based on UWA's
-`uwaedu/mytardis\_django` docker image), which can be pulled from DockerHub.  Alternatively, it
+The `docker-compose.yml` references a `monashmerc/mytardis_django` Docker image (based on UWA's
+`uwaedu/mytardis_django` docker image), which can be pulled from DockerHub.  Alternatively, it
 can be built locally from source, as described below.
 
 To contribute to the MyTardis project please read the [CONTRIBUTING.rst](https://github.com/mytardis/mytardis/blob/master/CONTRIBUTING.rst).
