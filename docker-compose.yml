@@ -23,7 +23,7 @@ services:
       - GUNICORN_WORKER_CLASS=gevent
       - MYTARDIS_BIOFORMATS_ENABLE=False
       - MYTARDIS_NIFCERT_ENABLE=False
-      - MYTARDIS_SITE_TITLE=TruDat@UWA_UAT
+      - MYTARDIS_SITE_TITLE=MyTardis Demo
       - MYTARDIS_RAPID_CONNECT_ENABLED=False
     env_file:
       - env.POSTGRES
