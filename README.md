@@ -7,12 +7,16 @@ $ git clone --recursive https://github.com/monash-merc/docker-mytardis.git mytar
 $ cd mytardis
 ```
 
-The `--recursive` option is required to pull in the the MyTardis git submodule.
+The `--recursive` option is required to pull in the git submodules listed in `.gitmodules`,
+i.e. `mytardis`, `mytardis-app-mydata`, and `mytardis-nif-cert`.  The `mytardis-app-mydata`
+submodule (required if using the MyData upload client) and `mytardis-nif-cert` submodule
+(required if using NIF certified data) provide optional extensions for your MyTardis deployment.
 
 If using the default `mytardis-4.x` branch of the `monash-merc/docker-mytardis` repository,
-this will pull all the MyTardis series-4.0 branch source and set docker-compose.yml file for
-the latest monashmerc/mytardis\_django docker image (based on UWA's uwaedu/mytardis\_django
-MyTardis docker image) with prerequisites for testing, etc...
+the recursive git clone will pull in all of the MyTardis `series-4.0` branch source code.
+
+The `docker-compose.yml` references a `monashmerc/mytardis_django` Docker image, which can be
+pulled from DockerHub.  Alternatively, it can be built locally from source, as described below.
 
 To contribute to the MyTardis project please read the [CONTRIBUTING.rst](https://github.com/mytardis/mytardis/blob/master/CONTRIBUTING.rst).
 
