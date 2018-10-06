@@ -1,4 +1,4 @@
-FROM gohitech/django:djcelery
+FROM monashmerc/django:djcelery-dj1.11
 MAINTAINER Dean Taylor <dean.taylor@uwa.edu.au>
 
 ENV DJANGO_PROJECT_NAME="tardis"
@@ -69,16 +69,16 @@ RUN pip install --no-cache-dir \
   python-ldap==2.4.45
 
 # Bioformats
-# https://github.com/keithschulze/mytardisbf
+# https://github.com/mytardis/mytardisbf
 #  openjdk-7-jdk \
 #  openjdk-8-jdk \
 RUN apt-get update && apt-get -y install \
-  openjdk-7-jdk \
+  openjdk-8-jdk \
   && apt-get clean
-ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 RUN  pip install -U --no-cache-dir \
     numpy
-RUN pip install --no-cache-dir -e git+https://github.com/keithschulze/mytardisbf.git@0.1.1#egg=mytardisbf
+RUN pip install --no-cache-dir -e git+https://github.com/mytardis/mytardisbf.git@master#egg=mytardisbf
 ENV MYTARDIS_BIOFORMATS_ENABLE='False'
 
 # https://pypi.python.org/pypi/django-generate-secret-key/1.0.2
