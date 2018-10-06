@@ -25,21 +25,26 @@ To contribute to the MyTardis project please read the [CONTRIBUTING.rst](https:/
 
 ## General instructions
 
-* Rename each required env\_template.MODULE file removing the "\_template" from the name.
-  * Database settings are essential, so you will require `env.POSTGRES` or an equivalent
-    for your preferred database engine.
-  * Django email settings (configured in `env.DJANGO_EMAIL`) are essential for running MyTardis
-    in production (with Django's DEBUG set to False), because unhandled exceptions will be
-    emailed to the MyTardis server administrators.
-* If you don't require the functionality configured by one or more of these env files, then you
-    don't need to rename it, but you should check whether it is referenced in any of the
-    `env_file:` sections of your `docker-compose.yml` file and remove any references to it.
+* Rename each required env\_template.MODULE file removing the "\_template" from
+  the name.
+  * Database settings are essential, so you will require `env.POSTGRES` or an
+    equivalent for your preferred database engine.
+  * NGINX (web server) settings are essential, so you will require `env.NGINX`
+    which can be created by renaming `env_template.NGINX`.
+  * Django email settings (configured in `env.DJANGO_EMAIL`) are essential for
+    running MyTardis in production (with Django's DEBUG set to False), because
+    unhandled exceptions will be emailed to the MyTardis server administrators.
+* If you don't require the functionality configured by one or more of these env
+    files, then you don't need to rename it, but you should check whether it is
+    referenced in any of the `env_file:` sections of your `docker-compose.yml`
+    file and remove any references to it.
 * The `Dockerfile` can be used with `docker-compose build` to build the
-    `monashmerc/mytardis_django` image which is referenced from within the `docker-compose.yml`
-     file.
-    * You may need to build your own version of the `monashmerc/mytardis_django` image if
-      you need to customize MyTardis's source code, but running `docker-compose` can pull
-      a pre-built `monashmerc/mytardis_django` image from DockerHub.
+    `monashmerc/mytardis_django` image which is referenced from within the
+    `docker-compose.yml` file.
+    * You may need to build your own version of the `monashmerc/mytardis_django`
+      image if you need to customize MyTardis's source code, but running
+      `docker-compose` can pull a pre-built `monashmerc/mytardis_django` image
+      from DockerHub.
 
 Edit `Dockerfile` and/or `docker-compose.yml` to your desired settings / alterations.
 
