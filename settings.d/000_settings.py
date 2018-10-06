@@ -18,7 +18,7 @@ INSTALLED_APPS += (
     'tardis.apps.sftp',
 )
 
-MIDDLEWARE_CLASSES += (
+MIDDLEWARE += (
     'tardis.tardis_portal.logging_middleware.LoggingMiddleware',
     'tardis.tardis_portal.auth.token_auth.TokenAuthMiddleware',
 )
