@@ -54,7 +54,7 @@ $ docker-compose logs --no-color -f    # check logging output
         django_1    | [2018-02-26 04:37:36 +0000] [111] [INFO] Booting worker with pid: 111
         django_1    | [2018-02-26 04:37:36 +0000] [114] [INFO] Booting worker with pid: 114
 
-$ docker-compose exec django python mytardis.py createsuperuser
+$ docker-compose exec django python manage.py createsuperuser
 ```
 
 Once the startup process has completed point you browser to http://localhost:8080/ and login

@@ -33,10 +33,8 @@ RUN pip install --no-cache-dir \
 
 COPY src/mytardis/tardis/ tardis/
 COPY src/mytardis/wsgi.py tardis/
-COPY src/mytardis/mytardis.py ./
+COPY src/mytardis/manage.py ./
 COPY src/mytardis/package.json ./
-
-RUN ln -s mytardis.py manage.py
 
 # Based on src/mytardis/build.sh
 COPY src/mytardis/requirements.txt src/mytardis/requirements-base.txt src/mytardis/requirements-docs.txt src/mytardis/requirements-test.txt ./
