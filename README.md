@@ -31,6 +31,8 @@ To contribute to the MyTardis project please read the [CONTRIBUTING.rst](https:/
     equivalent for your preferred database engine.
   * NGINX (web server) settings are essential, so you will require `env.NGINX`
     which can be created by renaming `env_template.NGINX`.
+  * Setting the default institution is essential, so you will require
+    `env.INSTITUTION` which can be created by renaming `env_template.INSTITUTION`.
   * Django email settings (configured in `env.DJANGO_EMAIL`) are essential for
     running MyTardis in production (with Django's DEBUG set to False), because
     unhandled exceptions will be emailed to the MyTardis server administrators.

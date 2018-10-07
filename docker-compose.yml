@@ -27,6 +27,7 @@ services:
       - MYTARDIS_RAPID_CONNECT_ENABLED=False
     env_file:
       - env.POSTGRES
+      - env.INSTITUTION
     links:
       - db
       - rabbitmq
@@ -45,6 +46,7 @@ services:
       - MYTARDIS_NIFCERT_ENABLE=False
     env_file:
       - env.POSTGRES
+      - env.INSTITUTION
     links:
       - db
       - rabbitmq
@@ -60,6 +62,7 @@ services:
       - MYTARDIS_NIFCERT_ENABLE=False
     env_file:
       - env.POSTGRES
+      - env.INSTITUTION
     links:
       - db
       - rabbitmq
