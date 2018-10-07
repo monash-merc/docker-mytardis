@@ -34,7 +34,16 @@ RUN pip install --no-cache-dir \
 COPY src/mytardis/tardis/ tardis/
 COPY src/mytardis/wsgi.py tardis/
 COPY src/mytardis/manage.py ./
+COPY src/mytardis/test.py ./
+
+# For pylint:
+COPY src/mytardis/.pylintrc ./
+
+# For npm install and npm test:
 COPY src/mytardis/package.json ./
+COPY src/mytardis/.eslint* ./
+COPY src/mytardis/Gruntfile.js ./
+COPY src/mytardis/js_tests/ js_tests/
 
 # Based on src/mytardis/build.sh
 COPY src/mytardis/requirements.txt src/mytardis/requirements-base.txt src/mytardis/requirements-docs.txt src/mytardis/requirements-test.txt ./
