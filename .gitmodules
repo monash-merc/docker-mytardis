@@ -5,6 +5,7 @@
 [submodule "src/mydata"]
 	path = src/mydata
 	url = https://github.com/mytardis/mytardis-app-mydata.git
+	branch = master
 [submodule "src/nifcert"]
 	path = src/nifcert
 	url = https://github.com/UWA-FoS/mytardis-nifcert.git
