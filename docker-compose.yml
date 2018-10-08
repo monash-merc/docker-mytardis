@@ -38,12 +38,13 @@ services:
       - store:/usr/src/app/var/store
   celery:
     image: monashmerc/mytardis_django:4.0-RC9
-    command: --loglevel=DEBUG --autoreload
+    command: -A tardis.celery.tardis_app --loglevel=DEBUG --autoreload
     environment:
       - CELERY_ENABLE=True
       - DJANGO_LOG_LEVEL=DEBUG
       - MYTARDIS_BIOFORMATS_ENABLE=False
       - MYTARDIS_NIFCERT_ENABLE=False
+      - DJANGO_SETTINGS_MODULE=tardis.settings
     env_file:
       - env.POSTGRES
       - env.INSTITUTION
@@ -56,10 +57,12 @@ services:
       - store:/usr/src/app/var/store
   beat:
     image: monashmerc/mytardis_django:4.0-RC9
+    command: -A tardis.celery.tardis_app
     environment:
       - CELERY_ENABLE=beat
       - MYTARDIS_BIOFORMATS_ENABLE=False
       - MYTARDIS_NIFCERT_ENABLE=False
+      - DJANGO_SETTINGS_MODULE=tardis.settings
     env_file:
       - env.POSTGRES
       - env.INSTITUTION
@@ -72,7 +75,7 @@ services:
       - store:/usr/src/app/var/store
   other:
     image: monashmerc/mytardis_django:4.0-RC9
-    command: ["tail","-f","/dev/null",]
+    command: ["tail", "-f", "/dev/null",]
     environment:
       - GUNICORN_ENABLE=False
     mem_limit: 500m

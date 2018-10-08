@@ -1,4 +1,4 @@
-FROM monashmerc/django:djcelery-dj1.11
+FROM monashmerc/django:dj1.11
 MAINTAINER Dean Taylor <dean.taylor@uwa.edu.au>
 
 ENV DJANGO_PROJECT_NAME="tardis"
