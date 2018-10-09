@@ -83,7 +83,6 @@ services:
       - staging:/usr/src/app/var/staging
       - static:/usr/src/app/static
       - store:/usr/src/app/var/store
-      - ./src/mytardis/test.py:/usr/src/app/test.py
   db:
     image: postgres:9.5
     environment:

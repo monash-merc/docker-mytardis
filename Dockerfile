@@ -44,7 +44,24 @@ COPY src/mytardis/package.json ./
 COPY src/mytardis/.eslint* ./
 COPY src/mytardis/Gruntfile.js ./
 COPY src/mytardis/js_tests/ js_tests/
-
+# For behave test:
+RUN apt-get update && apt-get install \
+    -qy \
+    unzip \
+    openjdk-8-jre-headless \
+    xvfb \
+    libxi6 \
+    libgconf-2-4 \
+    wget
+RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
+RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+RUN apt-get update && apt-get install -qy google-chrome-stable
+RUN wget -N http://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip -P ~/
+RUN unzip ~/chromedriver_linux64.zip -d ~/
+RUN mv -f ~/chromedriver /usr/local/bin/chromedriver
+ENV PATH="/usr/local/bin:${PATH}"
+RUN chmod 0755 /usr/local/bin/chromedriver
+COPY src/mytardis/features/ features/
 # Based on src/mytardis/build.sh
 COPY src/mytardis/requirements.txt src/mytardis/requirements-base.txt src/mytardis/requirements-docs.txt src/mytardis/requirements-test.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
