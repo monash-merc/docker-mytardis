@@ -1,1 +1,1 @@
-MYTARDIS_VERSION = {'commit_id': '9e5a642602e7f9e0fb5de66525d2911f9f75c12b', 'date': 'Tue, 2 Oct 2018 15:01:08 +1000', 'tag': 'v4.0.0-RC9', 'branch': 'series-4.0'}
+MYTARDIS_VERSION = {'commit_id': '29273790a8a51c551bb2895f1dc9b965308c00c7', 'date': 'Wed, 10 Oct 2018 15:58:53 +1100', 'tag': 'v4.0.0-RC10', 'branch': 'series-4.0'}
