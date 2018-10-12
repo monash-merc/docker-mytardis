@@ -52,7 +52,7 @@ volumes:
 
 services:
   django:
-    image: uwaedu/mytardis_django:uwa.3.9.0
+    image: monashmerc/mytardis_django:4.0-RC10
     build: .
     ports:
       - '8000:8000'
@@ -84,7 +84,7 @@ docker-compose logs --no-color -f [<container_name>]
 
 ## working on code
 ```bash
-git clone --recursive https://github.com/UWA-FoS/docker-mytardis.git
+git clone --recursive https://github.com/monash-merc/docker-mytardis.git
 cd docker-mytardis
 ```
 ```bash
@@ -120,15 +120,17 @@ git submodule update --init --recursive --remote
 cd src/mytardis
 git checkout develop
 ```
-If development is not against the MyTardis upstream development branch or this is for building a particulat tagged release.
+If development is not against the MyTardis upstream development branch or this is for building a particular tagged release.
 ```bash
 git fetch --all --tags --prune
-git checkout tags/v3.9.0 -b v3.9.0
+git checkout tags/v4.0.0-RC10 -b v4.0.0-RC10
 ```
 ```bash
 cp env_template.POSTGRES env.POSTGRES
+cp env_template.NGINX env.NGINX
+cp env_template.INSTITUTION env.INSTITUTION
 docker-compose pull
-docker pull uwaedu/mytardis_django
+docker pull monashmerc/mytardis_django
 docker-compose build
 docker-compose up -d
 docker-compose logs --no-color -f
