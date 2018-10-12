@@ -15,10 +15,10 @@ services:
       - DJANGO_ALLOWED_HOSTS=['*']
       - DJANGO_DATETIME_FORMAT='jS F Y H:i'
       - DJANGO_DATE_FORMAT='jS F Y'
-      - DJANGO_DEBUG=False
+      - DJANGO_DEBUG=True
       - DJANGO_DEFAULT_FROM_EMAIL='donotreply-mytardis@example.com'
       - DJANGO_EMAIL_SUBJECT_PREFIX="[MyTardis]:"
-      - DJANGO_LOG_LEVEL=DEBUG
+      - DJANGO_LOG_LEVEL=INFO
       - DJANGO_SECURE_PROXY_SSL_HEADER=('HTTP_X_FORWARDED_PROTO', 'https')
       - GUNICORN_WORKER_CLASS=gevent
       - MYTARDIS_BIOFORMATS_ENABLE=False
@@ -38,10 +38,10 @@ services:
       - store:/usr/src/app/var/store
   celery:
     image: monashmerc/mytardis_django:4.0-RC10
-    command: -A tardis.celery.tardis_app --loglevel=DEBUG --autoreload
+    command: -A tardis.celery.tardis_app --loglevel=INFO --autoreload
     environment:
       - CELERY_ENABLE=True
-      - DJANGO_LOG_LEVEL=DEBUG
+      - DJANGO_LOG_LEVEL=INFO
       - MYTARDIS_BIOFORMATS_ENABLE=False
       - MYTARDIS_NIFCERT_ENABLE=False
       - DJANGO_SETTINGS_MODULE=tardis.settings
