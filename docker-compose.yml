@@ -6,7 +6,7 @@ volumes:
   store:
 services:
   django:
-    image: monashmerc/mytardis_django:4.0-RC10
+    image: monashmerc/mytardis_django:latest
     build: .
     ports:
       - '8001:8000'
@@ -37,7 +37,7 @@ services:
       - static:/usr/src/app/static
       - store:/usr/src/app/var/store
   celery:
-    image: monashmerc/mytardis_django:4.0-RC10
+    image: monashmerc/mytardis_django:latest
     command: -A tardis.celery.tardis_app --loglevel=INFO --autoreload
     environment:
       - CELERY_ENABLE=True
@@ -56,7 +56,7 @@ services:
       - staging:/usr/src/app/var/staging
       - store:/usr/src/app/var/store
   beat:
-    image: monashmerc/mytardis_django:4.0-RC10
+    image: monashmerc/mytardis_django:latest
     command: -A tardis.celery.tardis_app
     environment:
       - CELERY_ENABLE=beat
@@ -74,7 +74,7 @@ services:
       - staging:/usr/src/app/var/staging
       - store:/usr/src/app/var/store
   other:
-    image: monashmerc/mytardis_django:4.0-RC10
+    image: monashmerc/mytardis_django:latest
     command: ["tail", "-f", "/dev/null",]
     environment:
       - GUNICORN_ENABLE=False

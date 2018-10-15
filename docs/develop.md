@@ -52,7 +52,7 @@ volumes:
 
 services:
   django:
-    image: monashmerc/mytardis_django:4.0-RC10
+    image: monashmerc/mytardis_django:latest
     build: .
     ports:
       - '8000:8000'
